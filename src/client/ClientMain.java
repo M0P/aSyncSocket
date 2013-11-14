@@ -25,10 +25,11 @@ public class ClientMain {
         System.out.println(ip);
         AsynchronousSocketChannel client = null;
         try {
-            pingTest(ip);
+            //pingTest(ip);
             client = AsynchronousSocketChannel.open();
             client.connect(new InetSocketAddress(ip, 7777)).get();
             System.out.println(client.isOpen());
+            System.out.println(client.getRemoteAddress());
             ByteBuffer message = ByteBuffer.wrap("ping".getBytes());
             client.write(message).get();
         } catch(IOException e) {
@@ -42,7 +43,7 @@ public class ClientMain {
         }
     }
 
-    public void pingTest(String ip) throws Exception{
+    public void pingTest(String ip) throws Exception {
         String ipAddress = "127.0.0.1";
         InetAddress inet = InetAddress.getByName(ipAddress);
 
