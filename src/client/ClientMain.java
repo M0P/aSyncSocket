@@ -25,7 +25,7 @@ public class ClientMain {
         AsynchronousSocketChannel client = null;
         try {
             client = AsynchronousSocketChannel.open();
-            client.connect(new InetSocketAddress(ip, 7777)).get();
+            client.connect(new InetSocketAddress(ip, 2587)).get();
             System.out.println(client.isOpen());
             ByteBuffer message = ByteBuffer.wrap("ping".getBytes());
             client.write(message).get();
