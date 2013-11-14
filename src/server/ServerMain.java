@@ -20,7 +20,7 @@ public class ServerMain {
 
     public void openServer() {
         try {
-            SocketAddress localaddr = new InetSocketAddress("127.0.0.1", 2587);
+            SocketAddress localaddr = new InetSocketAddress("127.0.0.1", 7777);
             AsynchronousServerSocketChannel server = AsynchronousServerSocketChannel.open().bind(localaddr);
             Future<AsynchronousSocketChannel> acceptFuture = server.accept();
             AsynchronousSocketChannel worker = acceptFuture.get();
