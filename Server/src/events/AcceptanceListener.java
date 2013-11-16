@@ -13,7 +13,8 @@ public class AcceptanceListener implements AcceptanceEventListener {
 
     //implement the required method(s) of the interface
     public void handleMyEventClassEvent(EventObject e) {
-        System.out.println(((TestThread) ((AcceptanceEvent) e).getSource()).getCounter() + " Durchläufe");
+        System.out.println(((TestThread) (e).getSource()).getCounter() + " Durchläufe " + ((AcceptanceEvent) e)
+                                                                                                  .getMessage());
         System.exit(1);
     }
 }
