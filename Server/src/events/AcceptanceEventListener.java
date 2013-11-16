@@ -1,5 +1,7 @@
 package events;
 
+import java.util.EventObject;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Xenowar
@@ -7,5 +9,6 @@ package events;
  * Time: 22:45
  * To change this template use File | Settings | File Templates.
  */
-public class AcceptanceEventListener {
+public interface AcceptanceEventListener {
+    public void handleMyEventClassEvent(EventObject e);
 }

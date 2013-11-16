@@ -1,5 +1,11 @@
 package server;
 
+import events.AcceptanceEvent;
+import events.AcceptanceEventListener;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -26,5 +32,23 @@ public class TestThread extends Thread {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Bla:");
         lmaa += scanner.nextInt();
+    }
+
+    private List _listeners = new ArrayList();
+    public synchronized void addEventListener(AcceptanceEventListener listener)  {
+        _listeners.add(listener);
+    }
+    public synchronized void removeEventListener(AcceptanceEventListener listener)   {
+        _listeners.remove(listener);
+    }
+
+    // call this method whenever you want to notify
+    //the event listeners of the particular event
+    private synchronized void fireEvent() {
+        AcceptanceEvent event = new AcceptanceEvent(this);
+        Iterator i = _listeners.iterator();
+        while(i.hasNext())  {
+            ((AcceptanceEventListener) i.next()).handleMyEventClassEvent(event);
+        }
     }
 }
