@@ -24,6 +24,7 @@ public class TestThread extends Thread {
 
     public void changeLMaa() {
         Scanner scanner = new Scanner(System.in);
+        System.out.print("Bla:");
         lmaa += scanner.nextInt();
     }
 }

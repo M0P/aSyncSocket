@@ -13,9 +13,9 @@ public class ServerMain {
     public void openServer() {
         //        try {
         TestThread tt = new TestThread();
-        Thread t = new Thread(tt);
-        t.run();
+        tt.start();
         while(true) {
+            System.out.println("Bla");
             tt.changeLMaa();
         }
         //            SocketAddress localaddr = new InetSocketAddress("0.0.0.0", 7777);
