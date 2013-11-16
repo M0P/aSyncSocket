@@ -1,5 +1,7 @@
 package server;
 
+import events.AcceptanceListener;
+
 public class ServerMain {
 
     public ServerMain() {
@@ -12,7 +14,7 @@ public class ServerMain {
 
     public void openServer() {
         //        try {
-        TestThread tt = new TestThread();
+        TestThread tt = new TestThread(new AcceptanceListener());
         tt.start();
         while(true) {
             System.out.println("Bla");
