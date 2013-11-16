@@ -11,9 +11,9 @@ public class Client {
     private String                    ip;
     private AsynchronousSocketChannel connection;
 
-    public Client(String userName, String ipAdress, AsynchronousSocketChannel client) {
+    public Client(String userName, String ipAddress, AsynchronousSocketChannel client) {
         this.clientName = userName;
-        this.ip = ipAdress;
+        this.ip = ipAddress;
         this.connection = client;
     }
 
