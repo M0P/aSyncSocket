@@ -22,15 +22,11 @@ public class ServerMain {
         try {
             SocketAddress localaddr = new InetSocketAddress("0.0.0.0", 7777);
             AsynchronousServerSocketChannel server = AsynchronousServerSocketChannel.open().bind(localaddr, 1000);
-            Future<AsynchronousSocketChannel> acceptFuture = server.accept();
-            AsynchronousSocketChannel worker = acceptFuture.get();
-            System.out.println(worker.getRemoteAddress());
-        } catch(IOException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        } catch(InterruptedException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        } catch(ExecutionException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            Future<AsynchronousSocketChannel> connection = server.accept();
+            AsynchronousSocketChannel client = connection.get();
+            System.out.println(client.getRemoteAddress());
+        } catch(IOException | InterruptedException | ExecutionException e) {
+            e.printStackTrace();
         }
     }
 }
